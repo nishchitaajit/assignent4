@@ -3,6 +3,7 @@
 /* eslint no-restricted-globals: "off" */
 
 db.products.remove({});
+db.deleted_products.remove({});
 const count = db.products.count();
 print('Inserted', count, 'products');
 db.counters.remove({ _id: 'products' });
@@ -11,3 +12,4 @@ db.products.createIndex({ id: 1 }, { unique: true });
 db.products.createIndex({ product_name: 1 });
 db.products.createIndex({ product_price: 1 });
 db.products.createIndex({ product_image: 1 });
+db.deleted_issues.createIndex({ id: 1 }, { unique: true });

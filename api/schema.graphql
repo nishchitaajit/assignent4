@@ -15,19 +15,27 @@ type Product {
   product_image: String!
 }
 
-input InventoryInputs {
+input productInputs {
   product_category: Category
   product_name: String
   product_price: Float
   product_image: String
 }
 
+input productUpdateInputs{
+  product_category: Category!
+  product_name: String!
+  product_price: Float
+  product_image: String
+}
+
 type Query {
-  about: String!
+  product(id: Int!):Product!
   productList: [Product!]!
 }
 
 type Mutation {
-  setAboutMessage(message: String!): String
-  productAdd(product: InventoryInputs!): Product!
+  productAdd(product: productInputs!): Product!
+  productUpdate(id: Int!, changes: productUpdateInputs!): Product!
+  productDelete(id: Int!): Boolean!
 }
